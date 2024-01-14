@@ -55,6 +55,29 @@ jobs:
         working-directory: "./terraform"
         run: terraform validate
 
+  tflint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - uses: actions/cache@v3.3.3
+        name: Cache plugin dir
+        with:
+          path: ~/.tflint.d/plugins
+          key: tflint-${{ hashFiles('.tflint.hcl') }}
+      - uses: terraform-linters/setup-tflint@v4.0.0
+        name: Setup TFLint
+        with:
+          tflint_version: v0.50.1
+      - name: Init TFLint
+        working-directory: "./terraform"
+        run: tflint --init
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Run TFLint
+        working-directory: "./terraform"
+        run: tflint -f compact
+
   terraform-plan:
     runs-on: ubuntu-22.04
     steps:
