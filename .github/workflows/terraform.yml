@@ -16,13 +16,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: Set $TERRAFORM_VERSION
-        working-directory: "./terraform"
-        run: echo "TERRAFORM_VERSION=$(cat .terraform-version)" >> "$GITHUB_ENV"
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3.0.0
+      - name: Cache aqua dir
+        uses: actions/cache@v3.3.3
         with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          path: ~/.local/share/aquaproj-aqua
+          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          restore-keys: |
+            aqua-installer-
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.21.3
+          aqua_opts: ""
       - name: Run terraform fmt
         working-directory: "./terraform"
         run: terraform fmt -check -recursive
@@ -37,13 +42,18 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
-      - name: Set $TERRAFORM_VERSION
-        working-directory: "./terraform"
-        run: echo "TERRAFORM_VERSION=$(cat .terraform-version)" >> "$GITHUB_ENV"
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3.0.0
+      - name: Cache aqua dir
+        uses: actions/cache@v3.3.3
         with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          path: ~/.local/share/aquaproj-aqua
+          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          restore-keys: |
+            aqua-installer-
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.21.3
+          aqua_opts: ""
       - name: Run terraform init
         working-directory: "./terraform"
         run: |
@@ -60,15 +70,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - uses: actions/cache@v3.3.3
-        name: Cache plugin dir
+      - name: Cache aqua dir
+        uses: actions/cache@v3.3.3
+        with:
+          path: ~/.local/share/aquaproj-aqua
+          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          restore-keys: |
+            aqua-installer-
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.21.3
+          aqua_opts: ""
+      - name: Cache tflint plugin dir
+        uses: actions/cache@v3.3.3
         with:
           path: ~/.tflint.d/plugins
-          key: tflint-${{ hashFiles('.tflint.hcl') }}
-      - uses: terraform-linters/setup-tflint@v4.0.0
-        name: Setup TFLint
-        with:
-          tflint_version: v0.50.1
+          key: tflint-${{ hashFiles('terraform/.tflint.hcl') }}
+          restore-keys: |
+            tflint-
       - name: Init TFLint
         working-directory: "./terraform"
         run: tflint --init
@@ -88,13 +108,18 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
-      - name: Set $TERRAFORM_VERSION
-        working-directory: "./terraform"
-        run: echo "TERRAFORM_VERSION=$(cat .terraform-version)" >> "$GITHUB_ENV"
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3.0.0
+      - name: Cache aqua dir
+        uses: actions/cache@v3.3.3
         with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          path: ~/.local/share/aquaproj-aqua
+          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          restore-keys: |
+            aqua-installer-
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.21.3
+          aqua_opts: ""
       - name: Run terraform init
         working-directory: "./terraform"
         run: |
@@ -118,13 +143,18 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
-      - name: Set $TERRAFORM_VERSION
-        working-directory: "./terraform"
-        run: echo "TERRAFORM_VERSION=$(cat .terraform-version)" >> "$GITHUB_ENV"
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3.0.0
+      - name: Cache aqua dir
+        uses: actions/cache@v3.3.3
         with:
-          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          path: ~/.local/share/aquaproj-aqua
+          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          restore-keys: |
+            aqua-installer-
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.21.3
+          aqua_opts: ""
       - name: Run terraform init
         working-directory: "./terraform"
         run: |
