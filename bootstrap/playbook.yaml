@@ -1,0 +1,13 @@
+- hosts: worker_node
+  vars:
+    github_username: honahuku
+
+  tasks:
+    - name: aptのアップデート
+      apt:
+        upgrade: no
+        update_cache: yes
+
+    - name: hoge
+      become: true # ref: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
+      shell: cat {{ ansible_user }}

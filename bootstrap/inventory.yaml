@@ -1,0 +1,12 @@
+all:
+  children:
+    control_plan:
+      hosts:
+        k8s-cp-a:
+    worker_node:
+      hosts:
+        k8s-wn-a:
+        k8s-wn-b:
+        k8s-wn-c:
+      vars:
+        ansible_user: honahuku
