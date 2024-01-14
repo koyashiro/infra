@@ -1,0 +1,22 @@
+name: terraform
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform-fmt:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Set $TERRAFORM_VERSION
+        run: echo "TERRAFORM_VERSION=$(cat .terraform-version)" >> "$GITHUB_ENV"
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3.0.0
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+      - name: Run terraform fmt
+        run: terraform fmt -check -recursive
