@@ -40,7 +40,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.0.1
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ secrets.TFSTATE_READ_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Cache aqua dir
         uses: actions/cache@v3.3.3
@@ -58,9 +58,9 @@ jobs:
         working-directory: "./terraform"
         run: |
           terraform init \
-            -backend-config='bucket=${{ secrets.S3_TFSTATE_BUCKET }}' \
-            -backend-config='key=${{ secrets.S3_TFSTATE_KEY }}' \
-            -backend-config='region=${{ secrets.S3_TFSTATE_REGION }}'
+            -backend-config='bucket=${{ secrets.TFSTATE_BUCKET }}' \
+            -backend-config='key=${{ secrets.TFSTATE_KEY }}' \
+            -backend-config='region=${{ secrets.TFSTATE_REGION }}'
       - name: Run terraform validate
         working-directory: "./terraform"
         run: terraform validate
@@ -106,7 +106,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.0.1
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ secrets.TFSTATE_READ_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Cache aqua dir
         uses: actions/cache@v3.3.3
@@ -124,9 +124,9 @@ jobs:
         working-directory: "./terraform"
         run: |
           terraform init \
-            -backend-config='bucket=${{ secrets.S3_TFSTATE_BUCKET }}' \
-            -backend-config='key=${{ secrets.S3_TFSTATE_KEY }}' \
-            -backend-config='region=${{ secrets.S3_TFSTATE_REGION }}'
+            -backend-config='bucket=${{ secrets.TFSTATE_BUCKET }}' \
+            -backend-config='key=${{ secrets.TFSTATE_KEY }}' \
+            -backend-config='region=${{ secrets.TFSTATE_REGION }}'
       - name: Run terraform plan
         working-directory: "./terraform"
         run: terraform plan
@@ -141,7 +141,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.0.1
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ secrets.TFSTATE_WRITE_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Cache aqua dir
         uses: actions/cache@v3.3.3
@@ -159,9 +159,9 @@ jobs:
         working-directory: "./terraform"
         run: |
           terraform init \
-            -backend-config='bucket=${{ secrets.S3_TFSTATE_BUCKET }}' \
-            -backend-config='key=${{ secrets.S3_TFSTATE_KEY }}' \
-            -backend-config='region=${{ secrets.S3_TFSTATE_REGION }}'
+            -backend-config='bucket=${{ secrets.TFSTATE_BUCKET }}' \
+            -backend-config='key=${{ secrets.TFSTATE_KEY }}' \
+            -backend-config='region=${{ secrets.TFSTATE_REGION }}'
       - name: Run terraform apply
         working-directory: "./terraform"
-        run: terraform apply
+        run: terraform apply -auto-approve
