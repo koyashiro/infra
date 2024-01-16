@@ -9,6 +9,7 @@ on:
 permissions:
   id-token: write
   contents: read
+  pull-requests: write
 
 jobs:
   terraform-fmt:
@@ -129,7 +130,9 @@ jobs:
             -backend-config='region=${{ secrets.TFSTATE_REGION }}'
       - name: Run terraform plan
         working-directory: "./terraform"
-        run: terraform plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: tfcmt plan -patch -- terraform plan -no-color
 
   terraform-apply:
     runs-on: ubuntu-22.04
@@ -164,4 +167,6 @@ jobs:
             -backend-config='region=${{ secrets.TFSTATE_REGION }}'
       - name: Run terraform apply
         working-directory: "./terraform"
-        run: terraform apply -auto-approve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: tfcmt apply -patch -- terraform apply -auto-approve -no-color
