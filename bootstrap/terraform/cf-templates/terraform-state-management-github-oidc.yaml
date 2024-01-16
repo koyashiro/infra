@@ -59,8 +59,11 @@ Resources:
               - Effect: Allow
                 Action:
                   - s3:ListBucket
-                  - s3:GetObject
                 Resource: !GetAtt TerraformTfstateBucket.Arn
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource: !Sub "${TerraformTfstateBucket.Arn}/*"
 
   TerraformWriteGitHubActionsOIDCRole:
     Type: AWS::IAM::Role
@@ -85,7 +88,10 @@ Resources:
               - Effect: Allow
                 Action:
                   - s3:ListBucket
+                Resource: !GetAtt TerraformTfstateBucket.Arn
+              - Effect: Allow
+                Action:
                   - s3:GetObject
                   - s3:PutObject
                   - s3:DeleteObject
-                Resource: !GetAtt TerraformTfstateBucket.Arn
+                Resource: !Sub "${TerraformTfstateBucket.Arn}/*"
