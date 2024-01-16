@@ -2,7 +2,7 @@
   "name": "infra",
   "version": "1.0.0",
   "devDependencies": {
-    "markdownlint-cli2": "0.12.0",
+    "markdownlint-cli2": "0.12.1",
     "prettier": "3.2.2"
   },
   "volta": {
