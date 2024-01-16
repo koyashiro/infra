@@ -169,4 +169,4 @@ jobs:
         working-directory: "./terraform"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: tfcmt apply -patch -- terraform apply -auto-approve -no-color
+        run: tfcmt apply -- terraform apply -auto-approve -no-color
