@@ -1,6 +1,7 @@
 {
   "name": "infra",
   "version": "1.0.0",
+  "private": true,
   "devDependencies": {
     "markdownlint-cli2": "0.12.1",
     "prettier": "3.2.2"
