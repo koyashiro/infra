@@ -23,7 +23,7 @@ jobs:
         uses: actions/cache@v3.3.3
         with:
           path: ~/.local/share/aquaproj-aqua
-          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          key: aqua-installer-${{ hashFiles('aqua.yaml') }}
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
@@ -44,7 +44,7 @@ jobs:
         uses: actions/cache@v3.3.3
         with:
           path: ~/.local/share/aquaproj-aqua
-          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          key: aqua-installer-${{ hashFiles('aqua.yaml') }}
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
@@ -75,7 +75,7 @@ jobs:
         uses: actions/cache@v3.3.3
         with:
           path: ~/.local/share/aquaproj-aqua
-          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          key: aqua-installer-${{ hashFiles('aqua.yaml') }}
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
@@ -108,7 +108,7 @@ jobs:
         uses: actions/cache@v3.3.3
         with:
           path: ~/.local/share/aquaproj-aqua
-          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          key: aqua-installer-${{ hashFiles('aqua.yaml') }}
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
@@ -143,7 +143,7 @@ jobs:
         uses: actions/cache@v3.3.3
         with:
           path: ~/.local/share/aquaproj-aqua
-          key: aqua-installer-${{hashFiles('aqua.yaml')}}
+          key: aqua-installer-${{ hashFiles('aqua.yaml') }}
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
