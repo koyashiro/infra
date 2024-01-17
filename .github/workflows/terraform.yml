@@ -9,6 +9,10 @@ on:
 permissions:
   pull-requests: write
 
+env:
+  TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+  TF_WORKSPACE: ${{ secrets.TF_WORKSPACE }}
+
 jobs:
   terraform-fmt:
     runs-on: ubuntu-22.04
@@ -55,8 +59,6 @@ jobs:
             token = "${{ secrets.TF_API_TOKEN }}"
           }
           EOF
-          echo 'TF_CLOUD_ORGANIZATION=${{ secrets.TF_CLOUD_ORGANIZATION }}' >> "$GITHUB_ENV"
-          echo 'TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}' >> "$GITHUB_ENV"
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
@@ -121,8 +123,6 @@ jobs:
             token = "${{ secrets.TF_API_TOKEN }}"
           }
           EOF
-          echo 'TF_CLOUD_ORGANIZATION=${{ secrets.TF_CLOUD_ORGANIZATION }}' >> "$GITHUB_ENV"
-          echo 'TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}' >> "$GITHUB_ENV"
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
@@ -158,8 +158,6 @@ jobs:
             token = "${{ secrets.TF_API_TOKEN }}"
           }
           EOF
-          echo 'TF_CLOUD_ORGANIZATION=${{ secrets.TF_CLOUD_ORGANIZATION }}' >> "$GITHUB_ENV"
-          echo 'TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}' >> "$GITHUB_ENV"
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
