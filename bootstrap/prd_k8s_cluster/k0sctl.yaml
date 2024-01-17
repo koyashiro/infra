@@ -5,28 +5,24 @@ metadata:
 spec:
   hosts:
   - ssh:
-      address: k8s-cp-a
-      user: root
+      address: $K8S_CP_A
+      user: honahuku
       port: 22
-      keyPath: null
     role: controller
   - ssh:
-      address: 192.168.122.32
-      user: root
+      address: $K8S_WN_A
+      user: honahuku
       port: 22
-      keyPath: null
     role: worker
   - ssh:
-      address: 192.168.122.32
-      user: root
+      address: $K8S_WN_B
+      user: honahuku
       port: 22
-      keyPath: null
     role: worker
   - ssh:
-      address: 192.168.122.32
-      user: root
+      address: $K8S_WN_C
+      user: honahuku
       port: 22
-      keyPath: null
     role: worker
   k0s:
     version: null

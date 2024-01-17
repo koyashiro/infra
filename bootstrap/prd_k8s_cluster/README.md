@@ -1,6 +1,5 @@
 # production 環境の k8s クラスタの bootstrap
 
-## cp に対して task を実行
 ```bash
-ansible-playbook -i inventory.yaml playbook_control_plan.yaml
+k0sctl apply --config bootstrap/prd_k8s_cluster/k0sctl.yaml
 ```
