@@ -8,5 +8,3 @@ all:
         k8s-wn-a:
         k8s-wn-b:
         k8s-wn-c:
-      vars:
-        ansible_user: honahuku

@@ -1,0 +1,35 @@
+apiVersion: k0sctl.k0sproject.io/v1beta1
+kind: Cluster
+metadata:
+  name: k0s-cluster
+spec:
+  hosts:
+  - ssh:
+      address: k8s-cp-a
+      user: root
+      port: 22
+      keyPath: null
+    role: controller
+  - ssh:
+      address: 192.168.122.32
+      user: root
+      port: 22
+      keyPath: null
+    role: worker
+  - ssh:
+      address: 192.168.122.32
+      user: root
+      port: 22
+      keyPath: null
+    role: worker
+  - ssh:
+      address: 192.168.122.32
+      user: root
+      port: 22
+      keyPath: null
+    role: worker
+  k0s:
+    version: null
+    versionChannel: stable
+    dynamicConfig: false
+    config: {}

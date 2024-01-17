@@ -1,4 +1,4 @@
-- hosts: worker_node
+- hosts: control_plan
   vars:
     github_username: honahuku
 
@@ -8,6 +8,6 @@
         upgrade: no
         update_cache: yes
 
-    - name: hoge
+    - name: k0s cli のセットアップ
       become: true # ref: https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_privilege_escalation.html
       shell: cat {{ ansible_user }}
