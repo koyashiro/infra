@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Cache aqua dir
-        uses: actions/cache@v3.3.3
+        uses: actions/cache@v4.0.0
         with:
           path: ~/.local/share/aquaproj-aqua
           key: aqua-installer-${{ hashFiles('aqua.yaml') }}
