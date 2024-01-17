@@ -12,6 +12,7 @@ permissions:
 env:
   TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
   TF_WORKSPACE: ${{ secrets.TF_WORKSPACE }}
+  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
   terraform-fmt:
@@ -52,13 +53,6 @@ jobs:
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
-      - name: Login to Terraform Cloud
-        run: |
-          cat > ~/.terraformrc <<EOF
-          credentials "app.terraform.io" {
-            token = "${{ secrets.TF_API_TOKEN }}"
-          }
-          EOF
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
@@ -116,13 +110,6 @@ jobs:
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
-      - name: Login to Terraform Cloud
-        run: |
-          cat > ~/.terraformrc <<EOF
-          credentials "app.terraform.io" {
-            token = "${{ secrets.TF_API_TOKEN }}"
-          }
-          EOF
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
@@ -151,13 +138,6 @@ jobs:
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
-      - name: Login to Terraform Cloud
-        run: |
-          cat > ~/.terraformrc <<EOF
-          credentials "app.terraform.io" {
-            token = "${{ secrets.TF_API_TOKEN }}"
-          }
-          EOF
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
