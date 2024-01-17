@@ -7,8 +7,6 @@ on:
   pull_request:
 
 permissions:
-  id-token: write
-  contents: read
   pull-requests: write
 
 jobs:
@@ -38,11 +36,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4.0.1
-        with:
-          role-to-assume: ${{ secrets.TFSTATE_READ_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
       - name: Cache aqua dir
         uses: actions/cache@v3.3.3
         with:
@@ -55,13 +48,18 @@ jobs:
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
+      - name: Login to Terraform Cloud
+        run: |
+          cat > ~/.terraformrc <<EOF
+          credentials "app.terraform.io" {
+            token = "${{ secrets.TF_API_TOKEN }}"
+          }
+          EOF
+          echo 'TF_CLOUD_ORGANIZATION=${{ secrets.TF_CLOUD_ORGANIZATION }}' >> "$GITHUB_ENV"
+          echo 'TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}' >> "$GITHUB_ENV"
       - name: Run terraform init
         working-directory: "./terraform"
-        run: |
-          terraform init \
-            -backend-config='bucket=${{ secrets.TFSTATE_BUCKET }}' \
-            -backend-config='key=${{ secrets.TFSTATE_KEY }}' \
-            -backend-config='region=${{ secrets.TFSTATE_REGION }}'
+        run: terraform init
       - name: Run terraform validate
         working-directory: "./terraform"
         run: terraform validate
@@ -104,11 +102,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4.0.1
-        with:
-          role-to-assume: ${{ secrets.TFSTATE_READ_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
       - name: Cache aqua dir
         uses: actions/cache@v3.3.3
         with:
@@ -121,13 +114,18 @@ jobs:
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
+      - name: Login to Terraform Cloud
+        run: |
+          cat > ~/.terraformrc <<EOF
+          credentials "app.terraform.io" {
+            token = "${{ secrets.TF_API_TOKEN }}"
+          }
+          EOF
+          echo 'TF_CLOUD_ORGANIZATION=${{ secrets.TF_CLOUD_ORGANIZATION }}' >> "$GITHUB_ENV"
+          echo 'TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}' >> "$GITHUB_ENV"
       - name: Run terraform init
         working-directory: "./terraform"
-        run: |
-          terraform init \
-            -backend-config='bucket=${{ secrets.TFSTATE_BUCKET }}' \
-            -backend-config='key=${{ secrets.TFSTATE_KEY }}' \
-            -backend-config='region=${{ secrets.TFSTATE_REGION }}'
+        run: terraform init
       - name: Run terraform plan
         working-directory: "./terraform"
         env:
@@ -141,11 +139,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4.0.1
-        with:
-          role-to-assume: ${{ secrets.TFSTATE_WRITE_ROLE_ARN }}
-          aws-region: ${{ secrets.AWS_REGION }}
       - name: Cache aqua dir
         uses: actions/cache@v3.3.3
         with:
@@ -158,13 +151,18 @@ jobs:
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
+      - name: Login to Terraform Cloud
+        run: |
+          cat > ~/.terraformrc <<EOF
+          credentials "app.terraform.io" {
+            token = "${{ secrets.TF_API_TOKEN }}"
+          }
+          EOF
+          echo 'TF_CLOUD_ORGANIZATION=${{ secrets.TF_CLOUD_ORGANIZATION }}' >> "$GITHUB_ENV"
+          echo 'TF_WORKSPACE=${{ secrets.TF_WORKSPACE }}' >> "$GITHUB_ENV"
       - name: Run terraform init
         working-directory: "./terraform"
-        run: |
-          terraform init \
-            -backend-config='bucket=${{ secrets.TFSTATE_BUCKET }}' \
-            -backend-config='key=${{ secrets.TFSTATE_KEY }}' \
-            -backend-config='region=${{ secrets.TFSTATE_REGION }}'
+        run: terraform init
       - name: Run terraform apply
         working-directory: "./terraform"
         env:
