@@ -5,4 +5,4 @@ packages:
   - name: hashicorp/terraform@v1.7.0
   - name: rhysd/actionlint@v1.6.26
   - name: suzuki-shunsuke/tfcmt@v4.8.0
-  - name: terraform-linters/tflint@v0.50.1
+  - name: terraform-linters/tflint@v0.50.2
