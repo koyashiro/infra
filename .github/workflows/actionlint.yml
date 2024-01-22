@@ -7,17 +7,25 @@ on:
   pull_request:
 
 jobs:
-  actionlint:
+  check-diff:
     runs-on: ubuntu-22.04
+    outputs:
+      target: ${{ steps.changes.outputs.target == 'true' }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
       - uses: dorny/paths-filter@v2.11.1
         id: changes
         with:
           filters: |
             target:
               - '.github/workflows/*.{yml,yaml}'
+
+  actionlint:
+    runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
       - name: Cache aqua dir
         uses: actions/cache@v4.0.0
         with:
@@ -25,13 +33,10 @@ jobs:
           key: aqua-installer-${{ hashFiles('aqua.yaml') }}
           restore-keys: |
             aqua-installer-
-        if: steps.changes.outputs.target == 'true'
       - name: Setup aqua
         uses: aquaproj/aqua-installer@v2.2.0
         with:
           aqua_version: v2.21.3
           aqua_opts: ""
-        if: steps.changes.outputs.target == 'true'
       - name: Run actionlint
         run: actionlint -color
-        if: steps.changes.outputs.target == 'true'

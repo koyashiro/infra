@@ -7,17 +7,24 @@ on:
   pull_request:
 
 jobs:
-  renovate-config-validator:
+  check-diff:
     runs-on: ubuntu-22.04
+    outputs:
+      target: ${{ steps.changes.outputs.target == 'true' }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
       - uses: dorny/paths-filter@v2.11.1
         id: changes
         with:
           filters: |
             target:
               - '**/renovate.json'
+
+  renovate-config-validator:
+    runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
       - name: Run renovate-config-validator
         uses: suzuki-shunsuke/github-action-renovate-config-validator@v1.0.1
-        if: steps.changes.outputs.target == 'true'

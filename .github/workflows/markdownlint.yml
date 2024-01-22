@@ -7,26 +7,31 @@ on:
   pull_request:
 
 jobs:
-  markdownlint:
+  check-diff:
     runs-on: ubuntu-22.04
+    outputs:
+      target: ${{ steps.changes.outputs.target == 'true' }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
       - uses: dorny/paths-filter@v2.11.1
         id: changes
         with:
           filters: |
             target:
               - '**/*.{md,markdown}'
+
+  markdownlint:
+    runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
       - name: Set $NODE_VERSION
         run: echo "NODE_VERSION=$(jq -r '.volta.node' < package.json)" >> "$GITHUB_ENV"
-        if: steps.changes.outputs.target == 'true'
       - name: Setup Node.js
         uses: actions/setup-node@v4.0.1
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
-        if: steps.changes.outputs.target == 'true'
       - name: Run markdownlint
         run: npx markdownlint-cli2 '*.{md,markdown}'
-        if: steps.changes.outputs.target == 'true'
