@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - ".github/workflows/*.{yml,yaml}"
   pull_request:
+    paths:
+      - ".github/workflows/*.{yml,yaml}"
 
 jobs:
   actionlint:

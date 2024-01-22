@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "**/*.{json,yml,yaml,md,markdow}"
   pull_request:
+    paths:
+      - "**/*.{json,yml,yaml,md,markdow}"
 
 jobs:
   prettier:
