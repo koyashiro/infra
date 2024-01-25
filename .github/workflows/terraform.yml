@@ -15,8 +15,22 @@ env:
   TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
+  check-diff:
+    runs-on: ubuntu-22.04
+    outputs:
+      target: ${{ steps.changes.outputs.target == 'true' }}
+    steps:
+      - uses: dorny/paths-filter@v2.11.1
+        id: changes
+        with:
+          filters: |
+            target:
+              - 'terraform/**/*'
+
   terraform-fmt:
     runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -38,6 +52,8 @@ jobs:
 
   terraform-validate:
     runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -62,6 +78,8 @@ jobs:
 
   tflint:
     runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -95,6 +113,8 @@ jobs:
 
   terraform-plan:
     runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -121,8 +141,8 @@ jobs:
 
   terraform-apply:
     runs-on: ubuntu-22.04
-    needs: terraform-plan
-    if: github.ref == 'refs/heads/main'
+    needs: [check-diff, terraform-plan]
+    if: needs.check-diff.outputs.target == 'true' && github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
