@@ -7,22 +7,8 @@ on:
   pull_request:
 
 jobs:
-  check-diff:
-    runs-on: ubuntu-22.04
-    outputs:
-      target: ${{ steps.changes.outputs.target == 'true' }}
-    steps:
-      - uses: dorny/paths-filter@v2.11.1
-        id: changes
-        with:
-          filters: |
-            target:
-              - '**/*.{json,yml,yaml,md,markdown}'
-
   prettier:
     runs-on: ubuntu-22.04
-    needs: [check-diff]
-    if: needs.check-diff.outputs.target == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
