@@ -44,7 +44,7 @@ jobs:
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
-        uses: aquaproj/aqua-installer@v2.2.0
+        uses: aquaproj/aqua-installer@v2.3.0
         with:
           aqua_version: v2.22.0
           aqua_opts: ""
@@ -67,7 +67,7 @@ jobs:
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
-        uses: aquaproj/aqua-installer@v2.2.0
+        uses: aquaproj/aqua-installer@v2.3.0
         with:
           aqua_version: v2.22.0
           aqua_opts: ""
@@ -93,7 +93,7 @@ jobs:
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
-        uses: aquaproj/aqua-installer@v2.2.0
+        uses: aquaproj/aqua-installer@v2.3.0
         with:
           aqua_version: v2.22.0
           aqua_opts: ""
@@ -128,7 +128,7 @@ jobs:
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
-        uses: aquaproj/aqua-installer@v2.2.0
+        uses: aquaproj/aqua-installer@v2.3.0
         with:
           aqua_version: v2.22.0
           aqua_opts: ""
@@ -156,7 +156,7 @@ jobs:
           restore-keys: |
             aqua-installer-
       - name: Setup aqua
-        uses: aquaproj/aqua-installer@v2.2.0
+        uses: aquaproj/aqua-installer@v2.3.0
         with:
           aqua_version: v2.22.0
           aqua_opts: ""
