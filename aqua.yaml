@@ -2,7 +2,7 @@ registries:
   - type: standard
     ref: v4.151.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-  - name: hashicorp/terraform@v1.7.4
+  - name: hashicorp/terraform@v1.7.5
   - name: rhysd/actionlint@v1.6.27
   - name: suzuki-shunsuke/tfcmt@v4.9.0
   - name: terraform-linters/tflint@v0.50.3
