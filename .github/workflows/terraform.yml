@@ -40,7 +40,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
         with:
-          aqua_version: v2.24.1
+          aqua_version: v2.25.0
       - name: Run terraform fmt
         working-directory: "./terraform"
         run: terraform fmt -check -recursive
@@ -55,7 +55,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
         with:
-          aqua_version: v2.24.1
+          aqua_version: v2.25.0
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
@@ -73,7 +73,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
         with:
-          aqua_version: v2.24.1
+          aqua_version: v2.25.0
       - name: Cache tflint plugin dir
         uses: actions/cache@ab5e6d0c87105b4c9c2047343972218f562e4319 # v4.0.1
         with:
@@ -98,7 +98,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
         with:
-          aqua_version: v2.24.1
+          aqua_version: v2.25.0
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
@@ -118,7 +118,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@7c7338067bdb97d5bea2acc82b5870afca470d18 # v2.3.0
         with:
-          aqua_version: v2.24.1
+          aqua_version: v2.25.0
       - name: Run terraform init
         working-directory: "./terraform"
         run: terraform init
