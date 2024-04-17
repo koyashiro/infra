@@ -23,6 +23,7 @@ jobs:
           filters: |
             target:
               - 'terraform/**/*'
+              - '.github/workflows/terraform.yml'
 
   terraform-fmt:
     runs-on: ubuntu-22.04
@@ -101,6 +102,7 @@ jobs:
         include:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
     env:
+      TFCMT_MASKS: "env:TF_VAR_cloudflare_api_token,env:TF_VAR_cloudflare_zone_id"
       TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
       TF_WORKSPACE: ${{ secrets[format('{0}_TF_WORKSPACE', matrix.prefix)] }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
@@ -132,6 +134,7 @@ jobs:
         include:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
     env:
+      TFCMT_MASKS: "env:TF_VAR_cloudflare_api_token,env:TF_VAR_cloudflare_zone_id"
       TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
       TF_WORKSPACE: ${{ secrets[format('{0}_TF_WORKSPACE', matrix.prefix)] }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
