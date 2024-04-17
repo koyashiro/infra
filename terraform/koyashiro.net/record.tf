@@ -92,3 +92,10 @@ resource "cloudflare_record" "txt_discord" {
   name    = "_discord"
   value   = "dh=2f7777c55cca3b5519378571f05bd3979da45d38"
 }
+
+resource "cloudflare_record" "txt_test" {
+  zone_id = data.cloudflare_zone.koyashiro_net.id
+  type    = "TXT"
+  name    = "test"
+  value   = "test"
+}
