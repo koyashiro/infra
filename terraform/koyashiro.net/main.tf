@@ -9,7 +9,14 @@ terraform {
   }
 
   cloud {
+    # organization = TF_CLOUD_ORGANIZATION
+
+    workspaces {
+      # name = TF_WORKSPACE
+    }
   }
 }
 
-provider "cloudflare" {}
+provider "cloudflare" {
+  # api_token = CLOUDFLARE_API_TOKEN
+}
