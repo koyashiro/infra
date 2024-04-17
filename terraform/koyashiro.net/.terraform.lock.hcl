@@ -5,20 +5,7 @@ provider "registry.terraform.io/cloudflare/cloudflare" {
   version     = "4.30.0"
   constraints = "4.30.0"
   hashes = [
-    "h1:+sw3nDmN439jp/wRUnxhYvmvy7lxAmaE/PxxruCpcAs=",
-    "h1:05UXM990Xso5MGGhB75CbiZnCs4pGNF+ov6vMXoKuDw=",
-    "h1:9f36r9vcStap6J2MBA1Sbn/HtIojcc++rFKEqr6ygVM=",
-    "h1:FhhTF09/BBk37akGLFx9/uWkGUGwSNRub8vP80TaF7Q=",
-    "h1:Fzjj14EChfjqCXwZwEHxn4S3W3AJie34Z1uiKl8pvtc=",
-    "h1:HMxD7OEehCSAr78ZwIPoOpdAGiAixLx15v7/JBmxgt8=",
-    "h1:HydbKJyE9yCIXqCuD6d+TxiPKsDc6UCj+5KKEQ+3DqI=",
-    "h1:Ne1ArJAaV45W0eOEYY1m/G8ILJ6MST1J1YsBX41iEtk=",
-    "h1:PwWXnsZymnpXIBxe1ZSGeaRJsIDuhxnL8Wouho4U6CE=",
-    "h1:RCa0TYsEy445PJKu3VfIWi4VtRPR5imc5/JLpeSXKkg=",
     "h1:W/q4chfazm9sEz6PVB7K2Uow+RXjLGwZ5F+jTRPfu/k=",
-    "h1:b5YZo6YJ35sKxhGrGSt+LaVhFGHsfhYfLK11gcWvWh0=",
-    "h1:hfnb9phsW/dOrprh9D5qZDkFh0wLVWSkrwGtT8Xp2Ng=",
-    "h1:ktPiwC8grfTg7Tx+ZtuKk5ztrCvsVIwGZig1a3xHbWE=",
     "zh:218d1948b59e3d2e3af082724a0d057bcca5a5643c5e7c3b85eefc02430edd6b",
     "zh:24eb677bc1b205565efb5c0d1c464f63d1e240aac61f5b2ef15165fe842cb7e2",
     "zh:27896ed2a4f05f6a46ef25e674e445e89bd4bfba8cddbe95940109c6dc3179cc",

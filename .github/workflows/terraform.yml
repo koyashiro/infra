@@ -9,12 +9,6 @@ on:
 permissions:
   pull-requests: write
 
-env:
-  TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
-  TF_WORKSPACE: ${{ secrets.TF_WORKSPACE }}
-  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
-  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
 jobs:
   check-diff:
     runs-on: ubuntu-22.04
@@ -46,9 +40,16 @@ jobs:
         run: terraform fmt -check -recursive
 
   terraform-validate:
+    name: terraform-validate (${{ matrix.dir }})
     runs-on: ubuntu-22.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
+    strategy:
+      matrix:
+        include:
+          - { dir: koyashiro.net, suffix: KOYASHIRO_NET }
+    env:
+      TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.suffix)] }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -56,11 +57,15 @@ jobs:
         uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
         with:
           aqua_version: v2.27.0
+      - name: Export secrets
+        uses: koyashiro/export-secrets-action@94ff8dc2655d49a9508ee4352468a2f5c1ee82fd # v0.1.0
+        with:
+          secrets: ${{ toJSON(secrets) }}
       - name: Run terraform init
-        working-directory: "./terraform"
+        working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
       - name: Run terraform validate
-        working-directory: "./terraform"
+        working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform validate
 
   tflint:
@@ -89,9 +94,16 @@ jobs:
         run: tflint -f compact
 
   terraform-plan:
+    name: terraform-plan (${{ matrix.dir }})
     runs-on: ubuntu-22.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
+    strategy:
+      matrix:
+        include:
+          - { dir: koyashiro.net, tf_workspace: TF_WORKSPACE_KOYASHIRO_NET }
+    env:
+      TF_WORKSPACE: ${{ secrets[matrix.tf_workspace] }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -99,19 +111,30 @@ jobs:
         uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
         with:
           aqua_version: v2.27.0
+      - name: Export secrets
+        uses: koyashiro/export-secrets-action@94ff8dc2655d49a9508ee4352468a2f5c1ee82fd # v0.1.0
+        with:
+          secrets: ${{ toJSON(secrets) }}
       - name: Run terraform init
-        working-directory: "./terraform"
+        working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
       - name: Run terraform plan
-        working-directory: "./terraform"
+        working-directory: "./terraform/${{ matrix.dir }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: tfcmt plan -patch -- terraform plan -no-color
 
   terraform-apply:
+    name: terraform-apply (${{ matrix.dir }})
     runs-on: ubuntu-22.04
     needs: [check-diff, terraform-plan]
     if: needs.check-diff.outputs.target == 'true' && github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        include:
+          - { dir: koyashiro.net, tf_workspace: TF_WORKSPACE_KOYASHIRO_NET }
+    env:
+      TF_WORKSPACE: ${{ secrets[matrix.tf_workspace] }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -119,11 +142,15 @@ jobs:
         uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
         with:
           aqua_version: v2.27.0
+      - name: Export secrets
+        uses: koyashiro/export-secrets-action@94ff8dc2655d49a9508ee4352468a2f5c1ee82fd # v0.1.0
+        with:
+          secrets: ${{ toJSON(secrets) }}
       - name: Run terraform init
-        working-directory: "./terraform"
+        working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
       - name: Run terraform apply
-        working-directory: "./terraform"
+        working-directory: "./terraform/${{ matrix.dir }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: tfcmt apply -- terraform apply -auto-approve -no-color
