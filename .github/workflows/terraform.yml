@@ -91,7 +91,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Run TFLint
         working-directory: "./terraform"
-        run: tflint -f compact
+        run: tflint --recursive
 
   terraform-plan:
     name: terraform-plan (${{ matrix.dir }})
