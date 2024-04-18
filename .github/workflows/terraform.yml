@@ -52,7 +52,7 @@ jobs:
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
     env:
       TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
-      TF_WORKSPACE: ${{ secrets[format('{0}_TF_WORKSPACE', matrix.prefix)] }}
+      TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
     steps:
       - name: Checkout
@@ -105,10 +105,8 @@ jobs:
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
     env:
       TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
-      TF_WORKSPACE: ${{ secrets[format('{0}_TF_WORKSPACE', matrix.prefix)] }}
+      TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
-      TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      TF_VAR_cloudflare_zone_id: ${{ secrets[format('{0}_CLOUDFLARE_ZONE_ID', matrix.prefix)] }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -116,6 +114,11 @@ jobs:
         uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
         with:
           aqua_version: v2.27.0
+      - name: Export secrets
+        uses: koyashiro/export-secrets-action@7ebcb0c449b6c08aad56d1c93ae9ffe0ce2d34e7 # v0.2.0
+        with:
+          secrets: ${{ toJSON(secrets) }}
+          downcase-tf-var: true
       - name: Run terraform init
         working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
@@ -137,10 +140,8 @@ jobs:
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
     env:
       TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
-      TF_WORKSPACE: ${{ secrets[format('{0}_TF_WORKSPACE', matrix.prefix)] }}
+      TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
-      TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      TF_VAR_cloudflare_zone_id: ${{ secrets[format('{0}_CLOUDFLARE_ZONE_ID', matrix.prefix)] }}
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -148,6 +149,11 @@ jobs:
         uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
         with:
           aqua_version: v2.27.0
+      - name: Export secrets
+        uses: koyashiro/export-secrets-action@7ebcb0c449b6c08aad56d1c93ae9ffe0ce2d34e7 # v0.2.0
+        with:
+          secrets: ${{ toJSON(secrets) }}
+          downcase-tf-var: true
       - name: Run terraform init
         working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
