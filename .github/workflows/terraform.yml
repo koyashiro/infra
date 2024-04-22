@@ -55,6 +55,7 @@ jobs:
           - { dir: koyashiro.live, prefix: KOYASHIRO_LIVE }
           - { dir: koyashiro.me, prefix: KOYASHIRO_ME }
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
+          - { dir: koyashiro.sh, prefix: KOYASHIRO_SH }
     env:
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
     steps:
@@ -117,6 +118,7 @@ jobs:
           - { dir: koyashiro.live, prefix: KOYASHIRO_LIVE }
           - { dir: koyashiro.me, prefix: KOYASHIRO_ME }
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
+          - { dir: koyashiro.sh, prefix: KOYASHIRO_SH }
     env:
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
     steps:
@@ -156,6 +158,7 @@ jobs:
           - { dir: koyashiro.live, prefix: KOYASHIRO_LIVE }
           - { dir: koyashiro.me, prefix: KOYASHIRO_ME }
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
+          - { dir: koyashiro.sh, prefix: KOYASHIRO_SH }
     env:
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
     steps:
