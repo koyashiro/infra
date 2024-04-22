@@ -4,6 +4,7 @@ resource "cloudflare_record" "cname_root" {
   name    = "@"
   value   = "koyashiro.pages.dev"
   proxied = true
+  ttl     = 1
 }
 
 resource "cloudflare_record" "cname_blog" {
@@ -12,6 +13,7 @@ resource "cloudflare_record" "cname_blog" {
   name    = "blog"
   value   = "blog-koyashiro.pages.dev"
   proxied = true
+  ttl     = 1
 }
 
 resource "cloudflare_record" "cname_cdn" {
@@ -20,6 +22,7 @@ resource "cloudflare_record" "cname_cdn" {
   name    = "cdn"
   value   = "cdn-koyashiro.pages.dev"
   proxied = true
+  ttl     = 1
 }
 
 resource "cloudflare_record" "mx_primary" {
@@ -27,6 +30,7 @@ resource "cloudflare_record" "mx_primary" {
   type     = "MX"
   name     = "@"
   value    = "aspmx.l.google.com"
+  ttl      = 1
   priority = 1
 }
 
@@ -35,6 +39,7 @@ resource "cloudflare_record" "mx_alt1" {
   type     = "MX"
   name     = "@"
   value    = "alt1.aspmx.l.google.com"
+  ttl      = 1
   priority = 5
 }
 
@@ -43,6 +48,7 @@ resource "cloudflare_record" "mx_alt2" {
   type     = "MX"
   name     = "@"
   value    = "alt2.aspmx.l.google.com"
+  ttl      = 1
   priority = 5
 }
 
@@ -51,6 +57,7 @@ resource "cloudflare_record" "mx_alt3" {
   type     = "MX"
   name     = "@"
   value    = "alt3.aspmx.l.google.com"
+  ttl      = 1
   priority = 10
 }
 
@@ -59,6 +66,7 @@ resource "cloudflare_record" "mx_alt4" {
   type     = "MX"
   name     = "@"
   value    = "alt4.aspmx.l.google.com"
+  ttl      = 1
   priority = 10
 }
 
@@ -67,6 +75,7 @@ resource "cloudflare_record" "txt_spf" {
   type    = "TXT"
   name    = "@"
   value   = "v=spf1 include:koyashi.ro ~all"
+  ttl     = 1
 }
 
 resource "cloudflare_record" "txt_google_suite_verification" {
@@ -74,6 +83,7 @@ resource "cloudflare_record" "txt_google_suite_verification" {
   type    = "TXT"
   name    = "@"
   value   = "google-site-verification=IXe9IiyOUytKAH9R0_KVE2Vmpt1iOB8kqwtSf-F4304"
+  ttl     = 1
 }
 
 resource "cloudflare_record" "txt_keybase_site_verification" {
@@ -81,6 +91,7 @@ resource "cloudflare_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   value   = "keybase-site-verification=h6nNjeIuG_eU4fByG3qFMwbC8-sUeC5pvpD_m5iIUh4"
+  ttl     = 1
 }
 
 resource "cloudflare_record" "txt_google_domainkey" {
@@ -88,6 +99,7 @@ resource "cloudflare_record" "txt_google_domainkey" {
   type    = "TXT"
   name    = "google._domainkey"
   value   = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsN9es+6C1V6MGC8Scg/nHQOEd9rtNraw6hqX6gi24F3i8hAVtlDC2FrSukqUz8HH1WEdaGxPir2yvE8xD7OxIT4uOUinb7eXY5CaCRJL9lpjj82FBcVOkiXcuTEFHu04kkHSo3fuLCl8OHrTup8HUqPJ2VwUiCeOkqjoy7Hv9VZDQmwjPbRyVncjVb/sDtVeY2bVUix1acSo/g5mIrbcw2xWrxCU/VWcEfOvQypfE+z9UfBpbeAGWArBD+l3+vLAWFb3dsMc4CvRa3mGY8kehOMTHnaaf2gO5k7afAkSil/zK580WLHG0Hq6rEG9tsawydVbrkCqRRsV9yAWhyI02QIDAQAB"
+  ttl     = 1
 }
 
 resource "cloudflare_record" "txt_discord" {
@@ -95,4 +107,5 @@ resource "cloudflare_record" "txt_discord" {
   type    = "TXT"
   name    = "_discord"
   value   = "dh=f083205940112e59edc7561488d3867f414384a3"
+  ttl     = 1
 }
