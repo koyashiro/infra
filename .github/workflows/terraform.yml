@@ -52,6 +52,7 @@ jobs:
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
           - { dir: koyashiro.jp, prefix: KOYASHIRO_JP }
+          - { dir: koyashiro.live, prefix: KOYASHIRO_LIVE }
           - { dir: koyashiro.me, prefix: KOYASHIRO_ME }
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
     env:
@@ -113,6 +114,7 @@ jobs:
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
           - { dir: koyashiro.jp, prefix: KOYASHIRO_JP }
+          - { dir: koyashiro.live, prefix: KOYASHIRO_LIVE }
           - { dir: koyashiro.me, prefix: KOYASHIRO_ME }
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
     env:
@@ -151,6 +153,7 @@ jobs:
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
           - { dir: koyashiro.jp, prefix: KOYASHIRO_JP }
+          - { dir: koyashiro.live, prefix: KOYASHIRO_LIVE }
           - { dir: koyashiro.me, prefix: KOYASHIRO_ME }
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
     env:
