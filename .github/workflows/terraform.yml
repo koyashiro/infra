@@ -50,6 +50,7 @@ jobs:
         include:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
+          - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
     env:
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
     steps:
@@ -107,6 +108,7 @@ jobs:
         include:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
+          - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
     env:
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
     steps:
@@ -141,6 +143,7 @@ jobs:
         include:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
+          - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
     env:
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
     steps:
