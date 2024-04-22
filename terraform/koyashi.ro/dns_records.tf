@@ -78,6 +78,30 @@ resource "cloudflare_record" "txt_spf" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "txt_dkim" {
+  zone_id = var.cloudflare_zone_id_koyashi_ro
+  type    = "TXT"
+  name    = "*._domainkey"
+  value   = "v=DKIM1; p="
+  ttl     = 1
+}
+
+resource "cloudflare_record" "txt_google_dkim" {
+  zone_id = var.cloudflare_zone_id_koyashi_ro
+  type    = "TXT"
+  name    = "google._domainkey"
+  value   = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsN9es+6C1V6MGC8Scg/nHQOEd9rtNraw6hqX6gi24F3i8hAVtlDC2FrSukqUz8HH1WEdaGxPir2yvE8xD7OxIT4uOUinb7eXY5CaCRJL9lpjj82FBcVOkiXcuTEFHu04kkHSo3fuLCl8OHrTup8HUqPJ2VwUiCeOkqjoy7Hv9VZDQmwjPbRyVncjVb/sDtVeY2bVUix1acSo/g5mIrbcw2xWrxCU/VWcEfOvQypfE+z9UfBpbeAGWArBD+l3+vLAWFb3dsMc4CvRa3mGY8kehOMTHnaaf2gO5k7afAkSil/zK580WLHG0Hq6rEG9tsawydVbrkCqRRsV9yAWhyI02QIDAQAB"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "txt_dmarc" {
+  zone_id = var.cloudflare_zone_id_koyashi_ro
+  type    = "TXT"
+  name    = "_dmarc"
+  value   = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "txt_google_suite_verification" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
@@ -94,13 +118,6 @@ resource "cloudflare_record" "txt_keybase_site_verification" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "txt_google_domainkey" {
-  zone_id = var.cloudflare_zone_id_koyashi_ro
-  type    = "TXT"
-  name    = "google._domainkey"
-  value   = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsN9es+6C1V6MGC8Scg/nHQOEd9rtNraw6hqX6gi24F3i8hAVtlDC2FrSukqUz8HH1WEdaGxPir2yvE8xD7OxIT4uOUinb7eXY5CaCRJL9lpjj82FBcVOkiXcuTEFHu04kkHSo3fuLCl8OHrTup8HUqPJ2VwUiCeOkqjoy7Hv9VZDQmwjPbRyVncjVb/sDtVeY2bVUix1acSo/g5mIrbcw2xWrxCU/VWcEfOvQypfE+z9UfBpbeAGWArBD+l3+vLAWFb3dsMc4CvRa3mGY8kehOMTHnaaf2gO5k7afAkSil/zK580WLHG0Hq6rEG9tsawydVbrkCqRRsV9yAWhyI02QIDAQAB"
-  ttl     = 1
-}
 
 resource "cloudflare_record" "txt_discord" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
