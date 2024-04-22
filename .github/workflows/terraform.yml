@@ -131,7 +131,7 @@ jobs:
         working-directory: "./terraform/${{ matrix.dir }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: tfcmt plan -patch -- terraform plan -no-color
+        run: tfcmt -var target:${{ matrix.dir }} plan -patch -- terraform plan -no-color
 
   terraform-apply:
     name: terraform-apply (${{ matrix.dir }})
@@ -166,4 +166,4 @@ jobs:
         working-directory: "./terraform/${{ matrix.dir }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: tfcmt apply -- terraform apply -auto-approve -no-color
+        run: tfcmt -var target:${{ matrix.dir }} apply -- terraform apply -auto-approve -no-color
