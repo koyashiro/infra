@@ -5,6 +5,9 @@
     ":semanticCommits",
     "github>aquaproj/aqua-renovate-config#2.2.1"
   ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "reviewers": ["koyashiro"],
   "packageRules": [
     {
