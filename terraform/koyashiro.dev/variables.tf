@@ -3,7 +3,7 @@ variable "cloudflare_api_token" {
   sensitive = true
 }
 
-variable "koyashiro_dev_cloudflare_zone_id" {
+variable "cloudflare_zone_id_koyashiro_dev" {
   type      = string
   sensitive = true
 }
