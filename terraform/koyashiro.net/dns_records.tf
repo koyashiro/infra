@@ -69,6 +69,30 @@ resource "cloudflare_record" "txt_spf" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "txt_dkim" {
+  zone_id = var.cloudflare_zone_id_koyashiro_net
+  type    = "TXT"
+  name    = "*._domainkey"
+  value   = "v=DKIM1; p="
+  ttl     = 1
+}
+
+resource "cloudflare_record" "txt_google_dkim" {
+  zone_id = var.cloudflare_zone_id_koyashiro_net
+  type    = "TXT"
+  name    = "google._domainkey"
+  value   = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyhioqL5nv/wDnkrmguw+J1qpm2fsLev+PKZMVVCLuGurD/6UJUscAFRN5xpjbP4DOsTmQtP/pTj8M0+9DkRItkuJUGCb9U9DMi3MN2Ll9BAaEfKFUDg9OEudIW/kWBhawkQpKA1DREu/bnZPr8VvwcyrO+DhPRUHYsylEPWrCY8EdDSv4U/m4a2kc79l1aJLo3iC542LStRNw70ls8hKHWC8+49vup2FFWFn9ktSgQs21A5hDY+VB/vEnpqCyN8R+VP0q5QgmAxvwWtfGQ11kIE82+p6OOI2RNPHYt5wHlPtmyZCZh28l3PRrdzXXOJiV9KvC9FuAvJmHUuu9OoF5wIDAQAB"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "txt_dmarc" {
+  zone_id = var.cloudflare_zone_id_koyashiro_net
+  type    = "TXT"
+  name    = "_dmarc"
+  value   = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "txt_google_suite_verification" {
   zone_id = var.cloudflare_zone_id_koyashiro_net
   type    = "TXT"
@@ -82,14 +106,6 @@ resource "cloudflare_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   value   = "keybase-site-verification=fFkMCr9xX06WBiCVODi28op8DCxmwfcYIN-iFSqEiwk"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "txt_google_domainkey" {
-  zone_id = var.cloudflare_zone_id_koyashiro_net
-  type    = "TXT"
-  name    = "google._domainkey"
-  value   = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyhioqL5nv/wDnkrmguw+J1qpm2fsLev+PKZMVVCLuGurD/6UJUscAFRN5xpjbP4DOsTmQtP/pTj8M0+9DkRItkuJUGCb9U9DMi3MN2Ll9BAaEfKFUDg9OEudIW/kWBhawkQpKA1DREu/bnZPr8VvwcyrO+DhPRUHYsylEPWrCY8EdDSv4U/m4a2kc79l1aJLo3iC542LStRNw70ls8hKHWC8+49vup2FFWFn9ktSgQs21A5hDY+VB/vEnpqCyN8R+VP0q5QgmAxvwWtfGQ11kIE82+p6OOI2RNPHYt5wHlPtmyZCZh28l3PRrdzXXOJiV9KvC9FuAvJmHUuu9OoF5wIDAQAB"
   ttl     = 1
 }
 
