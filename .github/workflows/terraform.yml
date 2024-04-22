@@ -51,9 +51,7 @@ jobs:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
     env:
-      TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
-      TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
@@ -61,6 +59,12 @@ jobs:
         uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
         with:
           aqua_version: v2.27.2
+      - name: Export secrets
+        uses: koyashiro/export-secrets-action@e6e7954bc392635bf94684d5a687bfafd921e5ec # v0.4.1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+          downcase-tf-var: true
+          downcase-tf-token: true
       - name: Run terraform init
         working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
@@ -104,9 +108,7 @@ jobs:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
     env:
-      TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
-      TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
@@ -119,6 +121,7 @@ jobs:
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
+          downcase-tf-token: true
       - name: Run terraform init
         working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
@@ -139,9 +142,7 @@ jobs:
           - { dir: koyashiro.net, prefix: KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
     env:
-      TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
       TF_WORKSPACE: ${{ secrets[format('TF_WORKSPACE_{0}', matrix.prefix)] }}
-      TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
@@ -154,6 +155,7 @@ jobs:
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
+          downcase-tf-token: true
       - name: Run terraform init
         working-directory: "./terraform/${{ matrix.dir }}"
         run: terraform init
