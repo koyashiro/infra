@@ -115,7 +115,7 @@ jobs:
         with:
           aqua_version: v2.27.1
       - name: Export secrets
-        uses: koyashiro/export-secrets-action@7ebcb0c449b6c08aad56d1c93ae9ffe0ce2d34e7 # v0.2.0
+        uses: koyashiro/export-secrets-action@22b56b5c2dd246e939fe499ec91f1f9b274539ef # v0.3.0
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
@@ -150,7 +150,7 @@ jobs:
         with:
           aqua_version: v2.27.1
       - name: Export secrets
-        uses: koyashiro/export-secrets-action@7ebcb0c449b6c08aad56d1c93ae9ffe0ce2d34e7 # v0.2.0
+        uses: koyashiro/export-secrets-action@22b56b5c2dd246e939fe499ec91f1f9b274539ef # v0.3.0
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
