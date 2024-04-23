@@ -19,7 +19,7 @@ resource "cloudflare_record" "mx_primary" {
   type     = "MX"
   name     = "@"
   value    = "aspmx.l.google.com"
-  ttl      = 1
+  ttl      = 1 # auto
   priority = 1
 }
 
@@ -28,7 +28,7 @@ resource "cloudflare_record" "mx_alt1" {
   type     = "MX"
   name     = "@"
   value    = "alt1.aspmx.l.google.com"
-  ttl      = 1
+  ttl      = 1 # auto
   priority = 5
 }
 
@@ -37,7 +37,7 @@ resource "cloudflare_record" "mx_alt2" {
   type     = "MX"
   name     = "@"
   value    = "alt2.aspmx.l.google.com"
-  ttl      = 1
+  ttl      = 1 # auto
   priority = 5
 }
 
@@ -46,7 +46,7 @@ resource "cloudflare_record" "mx_alt3" {
   type     = "MX"
   name     = "@"
   value    = "alt3.aspmx.l.google.com"
-  ttl      = 1
+  ttl      = 1 # auto
   priority = 10
 }
 
@@ -55,7 +55,7 @@ resource "cloudflare_record" "mx_alt4" {
   type     = "MX"
   name     = "@"
   value    = "alt4.aspmx.l.google.com"
-  ttl      = 1
+  ttl      = 1 # auto
   priority = 10
 }
 
@@ -64,7 +64,7 @@ resource "cloudflare_record" "txt_spf" {
   type    = "TXT"
   name    = "@"
   value   = "v=spf1 include:koyashiro.net ~all"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_dkim" {
@@ -72,7 +72,7 @@ resource "cloudflare_record" "txt_dkim" {
   type    = "TXT"
   name    = "*._domainkey"
   value   = "v=DKIM1; p="
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_google_dkim" {
@@ -80,7 +80,7 @@ resource "cloudflare_record" "txt_google_dkim" {
   type    = "TXT"
   name    = "google._domainkey"
   value   = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyhioqL5nv/wDnkrmguw+J1qpm2fsLev+PKZMVVCLuGurD/6UJUscAFRN5xpjbP4DOsTmQtP/pTj8M0+9DkRItkuJUGCb9U9DMi3MN2Ll9BAaEfKFUDg9OEudIW/kWBhawkQpKA1DREu/bnZPr8VvwcyrO+DhPRUHYsylEPWrCY8EdDSv4U/m4a2kc79l1aJLo3iC542LStRNw70ls8hKHWC8+49vup2FFWFn9ktSgQs21A5hDY+VB/vEnpqCyN8R+VP0q5QgmAxvwWtfGQ11kIE82+p6OOI2RNPHYt5wHlPtmyZCZh28l3PRrdzXXOJiV9KvC9FuAvJmHUuu9OoF5wIDAQAB"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_dmarc" {
@@ -88,7 +88,7 @@ resource "cloudflare_record" "txt_dmarc" {
   type    = "TXT"
   name    = "_dmarc"
   value   = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_google_suite_verification" {
@@ -96,7 +96,7 @@ resource "cloudflare_record" "txt_google_suite_verification" {
   type    = "TXT"
   name    = "@"
   value   = "google-site-verification=7-AYDWnsMkam_BpKeKWqjbeTqglhrp80t1N4RtKg6gQ"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_keybase_site_verification" {
@@ -104,7 +104,7 @@ resource "cloudflare_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   value   = "keybase-site-verification=fFkMCr9xX06WBiCVODi28op8DCxmwfcYIN-iFSqEiwk"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_discord" {
@@ -112,5 +112,5 @@ resource "cloudflare_record" "txt_discord" {
   type    = "TXT"
   name    = "_discord"
   value   = "dh=2f7777c55cca3b5519378571f05bd3979da45d38"
-  ttl     = 1
+  ttl     = 1 # auto
 }
