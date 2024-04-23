@@ -103,6 +103,20 @@ jobs:
         working-directory: "./terraform"
         run: tflint --recursive
 
+  trivy:
+    runs-on: ubuntu-22.04
+    needs: [check-diff]
+    if: needs.check-diff.outputs.target == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4.1.3
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
+        with:
+          aqua_version: v2.27.2
+      - name: Run Trivy
+        run: trivy config .
+
   terraform-plan:
     name: terraform-plan (${{ matrix.dir }})
     runs-on: ubuntu-22.04
