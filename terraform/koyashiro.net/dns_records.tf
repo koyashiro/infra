@@ -14,6 +14,14 @@ resource "cloudflare_record" "cname_vpm" {
   proxied = true
 }
 
+resource "cloudflare_record" "cname_cdn" {
+  zone_id = var.cloudflare_zone_id_koyashiro_net
+  type    = "CNAME"
+  name    = "cdn"
+  value   = "cdn-koyashiro.pages.dev"
+  proxied = true
+}
+
 resource "cloudflare_record" "mx_primary" {
   zone_id  = var.cloudflare_zone_id_koyashiro_net
   type     = "MX"
