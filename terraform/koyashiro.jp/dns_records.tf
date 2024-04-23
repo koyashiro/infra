@@ -4,7 +4,6 @@ resource "cloudflare_record" "cname_root" {
   name    = "@"
   value   = "koyashi.ro"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "txt_spf" {
