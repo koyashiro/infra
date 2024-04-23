@@ -2,6 +2,11 @@ terraform {
   required_version = "1.8.1"
 
   required_providers {
+    http = {
+      source  = "hashicorp/http"
+      version = "3.4.2"
+    }
+
     cloudflare = {
       source  = "cloudflare/cloudflare"
       version = "4.30.0"
