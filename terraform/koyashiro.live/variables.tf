@@ -8,12 +8,7 @@ variable "cloudflare_zone_id_koyashiro_live" {
   sensitive = true
 }
 
-variable "ipv4_koyashiro_live" {
-  type      = string
-  sensitive = true
-}
-
-variable "ipv6_koyashiro_live" {
+variable "vultr_api_key" {
   type      = string
   sensitive = true
 }

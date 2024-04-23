@@ -2,7 +2,7 @@ resource "cloudflare_record" "a_root" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "A"
   name    = "@"
-  value   = var.ipv4_koyashiro_live
+  value   = resource.vultr_instance.instance.main_ip
   proxied = true
   ttl     = 1
 }
@@ -11,7 +11,7 @@ resource "cloudflare_record" "aaaa_root" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "AAAA"
   name    = "@"
-  value   = var.ipv6_koyashiro_live
+  value   = resource.vultr_instance.instance.v6_main_ip
   proxied = true
   ttl     = 1
 }
