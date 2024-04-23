@@ -19,7 +19,7 @@ resource "cloudflare_record" "txt_spf" {
   type    = "TXT"
   name    = "@"
   value   = "v=spf1 -all"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_dkim" {
@@ -27,7 +27,7 @@ resource "cloudflare_record" "txt_dkim" {
   type    = "TXT"
   name    = "*._domainkey"
   value   = "v=DKIM1; p="
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_dmarc" {
@@ -35,7 +35,7 @@ resource "cloudflare_record" "txt_dmarc" {
   type    = "TXT"
   name    = "_dmarc"
   value   = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
-  ttl     = 1
+  ttl     = 1 # auto
 }
 
 resource "cloudflare_record" "txt_keybase_site_verification" {
@@ -43,5 +43,5 @@ resource "cloudflare_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   value   = "keybase-site-verification=NNZVaBOMg3ALJyId1SRe4LGb6lxxYQr8Nau-yf1ut4w"
-  ttl     = 1
+  ttl     = 1 # auto
 }
