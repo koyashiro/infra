@@ -4,7 +4,6 @@ resource "cloudflare_record" "cname_root" {
   name    = "@"
   value   = "koyashiro-sh.pages.dev"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "cname_dotfiles" {
@@ -13,7 +12,6 @@ resource "cloudflare_record" "cname_dotfiles" {
   name    = "dotfiles"
   value   = "koyashiro-sh.pages.dev"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "txt_spf" {

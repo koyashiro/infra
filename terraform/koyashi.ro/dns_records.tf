@@ -4,7 +4,6 @@ resource "cloudflare_record" "cname_root" {
   name    = "@"
   value   = "koyashiro.pages.dev"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "cname_blog" {
@@ -13,7 +12,6 @@ resource "cloudflare_record" "cname_blog" {
   name    = "blog"
   value   = "blog-koyashiro.pages.dev"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "cname_cdn" {
@@ -22,7 +20,6 @@ resource "cloudflare_record" "cname_cdn" {
   name    = "cdn"
   value   = "cdn-koyashiro.pages.dev"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "mx_primary" {

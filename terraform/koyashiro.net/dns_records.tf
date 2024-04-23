@@ -4,7 +4,6 @@ resource "cloudflare_record" "cname_root" {
   name    = "@"
   value   = "koyashi.ro"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "cname_vpm" {
@@ -13,7 +12,6 @@ resource "cloudflare_record" "cname_vpm" {
   name    = "vpm"
   value   = "vpm-repos.pages.dev"
   proxied = true
-  ttl     = 1
 }
 
 resource "cloudflare_record" "mx_primary" {
