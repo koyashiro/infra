@@ -13,11 +13,9 @@ resource "cloudflare_pages_project" "koyashiro_net" {
   }
 
   build_config {
-    build_command       = "npm run build"
-    destination_dir     = "out"
-    root_dir            = ""
-    web_analytics_tag   = resource.cloudflare_web_analytics_site.koyashiro_net.site_tag
-    web_analytics_token = resource.cloudflare_web_analytics_site.koyashiro_net.site_token
+    build_command   = "npm run build"
+    destination_dir = "out"
+    root_dir        = ""
   }
 
   deployment_configs {
