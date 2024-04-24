@@ -17,5 +17,7 @@ jobs:
         with:
           node-version-file: package.json
           cache: npm
+      - name: Run npm ci
+        run: npm ci
       - name: Run markdownlint
         run: npx markdownlint-cli2 '*.{md,markdown}'
