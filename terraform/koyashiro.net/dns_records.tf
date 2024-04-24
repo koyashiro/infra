@@ -2,7 +2,7 @@ resource "cloudflare_record" "cname_root" {
   zone_id = var.cloudflare_zone_id_koyashiro_net
   type    = "CNAME"
   name    = "@"
-  value   = "koyashiro.pages.dev"
+  value   = resource.cloudflare_pages_project.koyashiro_net.subdomain
   proxied = true
 }
 
