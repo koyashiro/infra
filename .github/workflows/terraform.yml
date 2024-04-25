@@ -66,7 +66,7 @@ jobs:
         with:
           aqua_version: v2.27.3
       - name: Export secrets
-        uses: koyashiro/export-secrets@3b29ef845e1f17e7ba5bcb3e73cb31cc79e85394 # v0.5.0
+        uses: koyashiro/export-secrets@0e3cbdb91bd369c3b3a4ebf68b5975662801f6a8 # v0.5.0
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
@@ -143,7 +143,7 @@ jobs:
         with:
           aqua_version: v2.27.3
       - name: Export secrets
-        uses: koyashiro/export-secrets@3b29ef845e1f17e7ba5bcb3e73cb31cc79e85394 # v0.5.0
+        uses: koyashiro/export-secrets@0e3cbdb91bd369c3b3a4ebf68b5975662801f6a8 # v0.5.0
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
@@ -183,7 +183,7 @@ jobs:
         with:
           aqua_version: v2.27.3
       - name: Export secrets
-        uses: koyashiro/export-secrets@3b29ef845e1f17e7ba5bcb3e73cb31cc79e85394 # v0.5.0
+        uses: koyashiro/export-secrets@0e3cbdb91bd369c3b3a4ebf68b5975662801f6a8 # v0.5.0
         with:
           secrets: ${{ toJSON(secrets) }}
           downcase-tf-var: true
