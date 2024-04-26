@@ -24,6 +24,7 @@ jobs:
             target:
               - 'terraform/**/*'
               - '.github/workflows/terraform.yml'
+              - 'aqua/terraform.yaml'
 
   terraform-fmt:
     runs-on: ubuntu-22.04
