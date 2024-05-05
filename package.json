@@ -5,7 +5,7 @@
   "devDependencies": {
     "markdownlint-cli2": "0.13.0",
     "prettier": "3.2.5",
-    "renovate": "37.340.8"
+    "renovate": "37.342.1"
   },
   "volta": {
     "node": "20.12.2"
