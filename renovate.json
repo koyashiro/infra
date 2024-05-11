@@ -6,15 +6,19 @@
     "github>aquaproj/aqua-renovate-config#2.3.0"
   ],
   "lockFileMaintenance": {
-    "enabled": true
+    "enabled": true,
+    "automerge": true,
+    "automergeType": "pr",
+    "automergeStrategy": "squash"
   },
-  "reviewers": ["koyashiro"],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
-      "automergeType": "squash"
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
     }
-  ]
+  ],
+  "reviewers": ["koyashiro"]
 }
