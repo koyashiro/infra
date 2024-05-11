@@ -36,7 +36,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.27.4
+          aqua_version: v2.28.0
       - name: Run terraform fmt
         working-directory: "./terraform"
         run: terraform fmt -check -recursive
@@ -65,7 +65,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.27.4
+          aqua_version: v2.28.0
       - name: Export secrets
         uses: koyashiro/export-secrets@0e3cbdb91bd369c3b3a4ebf68b5975662801f6a8 # v0.5.0
         with:
@@ -89,7 +89,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.27.4
+          aqua_version: v2.28.0
       - name: Cache tflint plugin dir
         uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
         with:
@@ -114,7 +114,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.27.4
+          aqua_version: v2.28.0
       - name: Run Trivy
         run: trivy config .
 
@@ -142,7 +142,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.27.4
+          aqua_version: v2.28.0
       - name: Export secrets
         uses: koyashiro/export-secrets@0e3cbdb91bd369c3b3a4ebf68b5975662801f6a8 # v0.5.0
         with:
@@ -182,7 +182,7 @@ jobs:
       - name: Setup aqua
         uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.27.4
+          aqua_version: v2.28.0
       - name: Export secrets
         uses: koyashiro/export-secrets@0e3cbdb91bd369c3b3a4ebf68b5975662801f6a8 # v0.5.0
         with:
