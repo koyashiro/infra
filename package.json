@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "markdownlint-cli2": "0.13.0",
-    "prettier": "3.2.5",
+    "prettier": "3.3.0",
     "renovate": "37.385.0"
   },
   "volta": {
