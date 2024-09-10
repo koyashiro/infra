@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   check-diff:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       target: ${{ steps.changes.outputs.target == 'true' }}
     steps:
@@ -27,7 +27,7 @@ jobs:
               - 'aqua.yaml'
 
   terraform-fmt:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
     steps:
@@ -43,7 +43,7 @@ jobs:
 
   terraform-validate:
     name: terraform-validate (${{ matrix.dir }})
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
     strategy:
@@ -82,7 +82,7 @@ jobs:
         run: terraform validate
 
   tflint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
     steps:
@@ -107,7 +107,7 @@ jobs:
         run: tflint --recursive
 
   trivy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
     steps:
@@ -122,7 +122,7 @@ jobs:
 
   terraform-plan:
     name: terraform-plan (${{ matrix.dir }})
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [check-diff]
     if: needs.check-diff.outputs.target == 'true'
     strategy:
@@ -164,7 +164,7 @@ jobs:
 
   terraform-apply:
     name: terraform-apply (${{ matrix.dir }})
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [check-diff, terraform-plan]
     if: needs.check-diff.outputs.target == 'true' && github.ref == 'refs/heads/main'
     strategy:
