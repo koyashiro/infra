@@ -5,9 +5,5 @@
   "devDependencies": {
     "markdownlint-cli2": "0.14.0",
     "prettier": "3.3.3"
-  },
-  "volta": {
-    "node": "20.17.0",
-    "npm": "10.8.3"
   }
 }

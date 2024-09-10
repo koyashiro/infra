@@ -21,12 +21,12 @@ resource "cloudflare_pages_project" "koyashiro_net" {
   deployment_configs {
     preview {
       environment_variables = {
-        NODE_VERSION = "20.12.2"
+        NODE_VERSION = "22.8.0"
       }
     }
     production {
       environment_variables = {
-        NODE_VERSION = "20.12.2"
+        NODE_VERSION = "22.8.0"
       }
     }
   }
