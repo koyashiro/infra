@@ -14,7 +14,7 @@ resource "cloudflare_pages_project" "koyashiro_net" {
 
   build_config {
     build_command   = "npm run build"
-    destination_dir = "out"
+    destination_dir = "dist"
     root_dir        = ""
   }
 
