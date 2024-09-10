@@ -50,6 +50,7 @@ jobs:
       matrix:
         include:
           - { dir: cdn.koyashiro.net, prefix: CDN_KOYASHIRO_NET }
+          - { dir: vpm.koyashiro.net, prefix: VPM_KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
@@ -128,6 +129,7 @@ jobs:
       matrix:
         include:
           - { dir: cdn.koyashiro.net, prefix: CDN_KOYASHIRO_NET }
+          - { dir: vpm.koyashiro.net, prefix: VPM_KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
@@ -169,6 +171,7 @@ jobs:
       matrix:
         include:
           - { dir: cdn.koyashiro.net, prefix: CDN_KOYASHIRO_NET }
+          - { dir: vpm.koyashiro.net, prefix: VPM_KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
