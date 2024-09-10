@@ -14,14 +14,6 @@ resource "cloudflare_record" "cname_blog" {
   proxied = true
 }
 
-resource "cloudflare_record" "cname_cdn" {
-  zone_id = var.cloudflare_zone_id_koyashi_ro
-  type    = "CNAME"
-  name    = "cdn"
-  content = "cdn-koyashiro.pages.dev"
-  proxied = true
-}
-
 resource "cloudflare_record" "mx_primary" {
   zone_id  = var.cloudflare_zone_id_koyashi_ro
   type     = "MX"
