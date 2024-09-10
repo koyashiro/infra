@@ -49,6 +49,7 @@ jobs:
     strategy:
       matrix:
         include:
+          - { dir: cdn.koyashiro.net, prefix: CDN_KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
@@ -126,6 +127,7 @@ jobs:
     strategy:
       matrix:
         include:
+          - { dir: cdn.koyashiro.net, prefix: CDN_KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
@@ -166,6 +168,7 @@ jobs:
     strategy:
       matrix:
         include:
+          - { dir: cdn.koyashiro.net, prefix: CDN_KOYASHIRO_NET }
           - { dir: koyashi.ro, prefix: KOYASHI_RO }
           - { dir: koyashiro.com, prefix: KOYASHIRO_COM }
           - { dir: koyashiro.dev, prefix: KOYASHIRO_DEV }
