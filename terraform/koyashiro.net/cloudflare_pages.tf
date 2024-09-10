@@ -16,6 +16,10 @@ resource "cloudflare_pages_project" "koyashiro_net" {
     build_command   = "npm run build"
     destination_dir = "dist"
     root_dir        = ""
+
+    # Web Analytics is not supported
+    web_analytics_tag   = ""
+    web_analytics_token = ""
   }
 
   deployment_configs {
@@ -29,6 +33,13 @@ resource "cloudflare_pages_project" "koyashiro_net" {
         NODE_VERSION = "22.8.0"
       }
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      build_config["web_analytics_tag"],
+      build_config["web_analytics_token"],
+    ]
   }
 }
 
