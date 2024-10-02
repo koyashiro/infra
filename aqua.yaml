@@ -4,7 +4,7 @@ registries:
 packages:
   - name: aquasecurity/trivy@v0.55.2
   - name: cloudflare/cloudflared@2024.9.1
-  - name: hashicorp/terraform@v1.9.6
+  - name: hashicorp/terraform@v1.9.7
   - name: nodejs/node@v22.9.0
   - name: rhysd/actionlint@v1.7.3
   - name: suzuki-shunsuke/tfcmt@v4.13.0
