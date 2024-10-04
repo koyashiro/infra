@@ -7,5 +7,5 @@ packages:
   - name: hashicorp/terraform@v1.9.7
   - name: nodejs/node@v22.9.0
   - name: rhysd/actionlint@v1.7.3
-  - name: suzuki-shunsuke/tfcmt@v4.13.0
+  - name: suzuki-shunsuke/tfcmt@v4.14.0
   - name: terraform-linters/tflint@v0.53.0
