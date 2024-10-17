@@ -13,6 +13,12 @@
   },
   "packageRules": [
     {
+      "matchFileNames": ["**/*.tf"],
+      "matchDatasources": ["node-version"],
+      "matchPackageNames": ["node"],
+      "matchStrings": ["NODE_VERSION\\s=\\s\"(?<version>[^\"]+)\""]
+    },
+    {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
