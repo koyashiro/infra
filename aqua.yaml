@@ -1,6 +1,6 @@
 registries:
   - type: standard
-    ref: v4.255.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.256.1 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: aquasecurity/trivy@v0.57.1
   - name: cloudflare/cloudflared@2024.11.1
