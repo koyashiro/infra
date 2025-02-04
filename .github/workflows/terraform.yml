@@ -36,7 +36,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
-          aqua_version: v2.43.1
+          aqua_version: v2.43.2
       - name: Run terraform fmt
         working-directory: "./terraform"
         run: terraform fmt -check -recursive
@@ -67,7 +67,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
-          aqua_version: v2.43.1
+          aqua_version: v2.43.2
       - name: Export secrets
         uses: koyashiro/export-secrets@97186061e694b133f51a120945a687cc7844c771 # v0.6.0
         with:
@@ -91,7 +91,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
-          aqua_version: v2.43.1
+          aqua_version: v2.43.2
       - name: Cache tflint plugin dir
         uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
         with:
@@ -116,7 +116,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
-          aqua_version: v2.43.1
+          aqua_version: v2.43.2
       - name: Run Trivy
         run: trivy config .
 
@@ -146,7 +146,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
-          aqua_version: v2.43.1
+          aqua_version: v2.43.2
       - name: Export secrets
         uses: koyashiro/export-secrets@97186061e694b133f51a120945a687cc7844c771 # v0.6.0
         with:
@@ -188,7 +188,7 @@ jobs:
       - name: Install aqua
         uses: aquaproj/aqua-installer@e2d0136abcf70b7a2f6f505720640750557c4b33 # v3.1.1
         with:
-          aqua_version: v2.43.1
+          aqua_version: v2.43.2
       - name: Export secrets
         uses: koyashiro/export-secrets@97186061e694b133f51a120945a687cc7844c771 # v0.6.0
         with:
