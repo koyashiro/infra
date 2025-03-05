@@ -2,7 +2,7 @@ registries:
   - type: standard
     ref: v4.324.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-  - name: aquasecurity/trivy@v0.59.1
+  - name: aquasecurity/trivy@v0.60.0
   - name: cloudflare/cloudflared@2024.12.2
   - name: hashicorp/terraform@v1.11.0
   - name: rhysd/actionlint@v1.7.7
