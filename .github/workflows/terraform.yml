@@ -93,7 +93,7 @@ jobs:
         with:
           aqua_version: v2.45.1
       - name: Cache tflint plugin dir
-        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4.2.2
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: ~/.tflint.d/plugins
           key: tflint-${{ hashFiles('terraform/.tflint.hcl') }}
