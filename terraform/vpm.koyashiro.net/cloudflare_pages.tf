@@ -4,7 +4,7 @@ resource "cloudflare_pages_project" "vpm_koyashiro_net" {
   production_branch = "main"
 
   build_config = {
-    build_caching   = ture
+    build_caching   = true
     build_command   = "npm run build"
     destination_dir = "dist"
     root_dir        = ""
