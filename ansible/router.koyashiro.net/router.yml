@@ -1,0 +1,5 @@
+- name: Configure router
+  hosts: router
+  become: yes
+  roles:
+    - common
