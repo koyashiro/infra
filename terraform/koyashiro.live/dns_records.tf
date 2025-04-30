@@ -1,4 +1,4 @@
-resource "cloudflare_record" "a_root" {
+resource "cloudflare_dns_record" "a_root" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "A"
   name    = "@"
@@ -6,7 +6,7 @@ resource "cloudflare_record" "a_root" {
   proxied = true
 }
 
-resource "cloudflare_record" "aaaa_root" {
+resource "cloudflare_dns_record" "aaaa_root" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "AAAA"
   name    = "@"
@@ -14,7 +14,7 @@ resource "cloudflare_record" "aaaa_root" {
   proxied = true
 }
 
-resource "cloudflare_record" "txt_spf" {
+resource "cloudflare_dns_record" "txt_spf" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "TXT"
   name    = "@"
@@ -22,7 +22,7 @@ resource "cloudflare_record" "txt_spf" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_dkim" {
+resource "cloudflare_dns_record" "txt_dkim" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "TXT"
   name    = "*._domainkey"
@@ -30,7 +30,7 @@ resource "cloudflare_record" "txt_dkim" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_dmarc" {
+resource "cloudflare_dns_record" "txt_dmarc" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "TXT"
   name    = "_dmarc"
@@ -38,7 +38,7 @@ resource "cloudflare_record" "txt_dmarc" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_keybase_site_verification" {
+resource "cloudflare_dns_record" "txt_keybase_site_verification" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "TXT"
   name    = "@"

@@ -1,4 +1,4 @@
-resource "cloudflare_record" "cname_cdn" {
+resource "cloudflare_dns_record" "cname_cdn" {
   zone_id = var.cloudflare_zone_id_koyashiro_net
   type    = "CNAME"
   name    = "cdn"

@@ -1,4 +1,4 @@
-resource "cloudflare_record" "cname_root" {
+resource "cloudflare_dns_record" "cname_root" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "CNAME"
   name    = "@"
@@ -6,7 +6,7 @@ resource "cloudflare_record" "cname_root" {
   proxied = true
 }
 
-resource "cloudflare_record" "cname_blog" {
+resource "cloudflare_dns_record" "cname_blog" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "CNAME"
   name    = "blog"
@@ -14,7 +14,7 @@ resource "cloudflare_record" "cname_blog" {
   proxied = true
 }
 
-resource "cloudflare_record" "mx_primary" {
+resource "cloudflare_dns_record" "mx_primary" {
   zone_id  = var.cloudflare_zone_id_koyashi_ro
   type     = "MX"
   name     = "@"
@@ -23,7 +23,7 @@ resource "cloudflare_record" "mx_primary" {
   priority = 1
 }
 
-resource "cloudflare_record" "mx_alt1" {
+resource "cloudflare_dns_record" "mx_alt1" {
   zone_id  = var.cloudflare_zone_id_koyashi_ro
   type     = "MX"
   name     = "@"
@@ -32,7 +32,7 @@ resource "cloudflare_record" "mx_alt1" {
   priority = 5
 }
 
-resource "cloudflare_record" "mx_alt2" {
+resource "cloudflare_dns_record" "mx_alt2" {
   zone_id  = var.cloudflare_zone_id_koyashi_ro
   type     = "MX"
   name     = "@"
@@ -41,7 +41,7 @@ resource "cloudflare_record" "mx_alt2" {
   priority = 5
 }
 
-resource "cloudflare_record" "mx_alt3" {
+resource "cloudflare_dns_record" "mx_alt3" {
   zone_id  = var.cloudflare_zone_id_koyashi_ro
   type     = "MX"
   name     = "@"
@@ -50,7 +50,7 @@ resource "cloudflare_record" "mx_alt3" {
   priority = 10
 }
 
-resource "cloudflare_record" "mx_alt4" {
+resource "cloudflare_dns_record" "mx_alt4" {
   zone_id  = var.cloudflare_zone_id_koyashi_ro
   type     = "MX"
   name     = "@"
@@ -59,7 +59,7 @@ resource "cloudflare_record" "mx_alt4" {
   priority = 10
 }
 
-resource "cloudflare_record" "txt_spf" {
+resource "cloudflare_dns_record" "txt_spf" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "@"
@@ -67,7 +67,7 @@ resource "cloudflare_record" "txt_spf" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_dkim" {
+resource "cloudflare_dns_record" "txt_dkim" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "*._domainkey"
@@ -75,7 +75,7 @@ resource "cloudflare_record" "txt_dkim" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_google_dkim" {
+resource "cloudflare_dns_record" "txt_google_dkim" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "google._domainkey"
@@ -83,7 +83,7 @@ resource "cloudflare_record" "txt_google_dkim" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_dmarc" {
+resource "cloudflare_dns_record" "txt_dmarc" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "_dmarc"
@@ -91,7 +91,7 @@ resource "cloudflare_record" "txt_dmarc" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_google_suite_verification" {
+resource "cloudflare_dns_record" "txt_google_suite_verification" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "@"
@@ -99,7 +99,7 @@ resource "cloudflare_record" "txt_google_suite_verification" {
   ttl     = 1 # auto
 }
 
-resource "cloudflare_record" "txt_keybase_site_verification" {
+resource "cloudflare_dns_record" "txt_keybase_site_verification" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "@"
@@ -108,7 +108,7 @@ resource "cloudflare_record" "txt_keybase_site_verification" {
 }
 
 
-resource "cloudflare_record" "txt_discord" {
+resource "cloudflare_dns_record" "txt_discord" {
   zone_id = var.cloudflare_zone_id_koyashi_ro
   type    = "TXT"
   name    = "_discord"
