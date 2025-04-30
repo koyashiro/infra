@@ -3,16 +3,8 @@ resource "cloudflare_pages_project" "vpm_koyashiro_net" {
   name              = "vpm-repos"
   production_branch = "main"
 
-  source {
-    type = "github"
-    config {
-      owner             = "koyashiro"
-      repo_name         = "vpm-repos"
-      production_branch = "main"
-    }
-  }
-
-  build_config {
+  build_config = {
+    build_caching   = ture
     build_command   = "npm run build"
     destination_dir = "dist"
     root_dir        = ""
