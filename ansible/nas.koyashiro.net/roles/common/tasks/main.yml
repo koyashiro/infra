@@ -1,0 +1,29 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    upgrade: no
+
+- name: Install packages
+  apt:
+    name:
+      - vim
+    state: present
+
+- name: Set hostname
+  hostname:
+    name: nas.koyashiro.net
+
+- name: Generate locale
+  locale_gen:
+    name: en_US.UTF-8
+    state: present
+
+- name: Set locale
+  command: localectl set-locale LANG=en_US.UTF-8
+
+- name: Set timezone
+  timezone:
+    name: Asia/Tokyo
+
+- name: Set editor
+  command: update-alternatives --set editor /usr/bin/vim.basic
