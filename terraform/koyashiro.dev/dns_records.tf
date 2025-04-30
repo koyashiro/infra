@@ -4,6 +4,7 @@ resource "cloudflare_dns_record" "cname_root" {
   name    = "@"
   content = "koyashi.ro"
   proxied = true
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_spf" {
@@ -11,7 +12,7 @@ resource "cloudflare_dns_record" "txt_spf" {
   type    = "TXT"
   name    = "@"
   content = "v=spf1 -all"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_dkim" {
@@ -19,7 +20,7 @@ resource "cloudflare_dns_record" "txt_dkim" {
   type    = "TXT"
   name    = "*._domainkey"
   content = "v=DKIM1; p="
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_dmarc" {
@@ -27,7 +28,7 @@ resource "cloudflare_dns_record" "txt_dmarc" {
   type    = "TXT"
   name    = "_dmarc"
   content = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_keybase_site_verification" {
@@ -35,5 +36,5 @@ resource "cloudflare_dns_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   content = "keybase-site-verification=cgtWui1rP9uCabMptNv5HvLRW6yWnQpHTvfTjhlSPFA"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }

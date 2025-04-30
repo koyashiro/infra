@@ -4,6 +4,7 @@ resource "cloudflare_dns_record" "cname_root" {
   name    = "@"
   content = "koyashiro-sh.pages.dev"
   proxied = true
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "cname_dotfiles" {
@@ -12,6 +13,7 @@ resource "cloudflare_dns_record" "cname_dotfiles" {
   name    = "dotfiles"
   content = "koyashiro-sh.pages.dev"
   proxied = true
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_spf" {
@@ -19,7 +21,7 @@ resource "cloudflare_dns_record" "txt_spf" {
   type    = "TXT"
   name    = "@"
   content = "v=spf1 -all"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_dkim" {
@@ -27,7 +29,7 @@ resource "cloudflare_dns_record" "txt_dkim" {
   type    = "TXT"
   name    = "*._domainkey"
   content = "v=DKIM1; p="
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_dmarc" {
@@ -35,7 +37,7 @@ resource "cloudflare_dns_record" "txt_dmarc" {
   type    = "TXT"
   name    = "_dmarc"
   content = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_keybase_site_verification" {
@@ -43,5 +45,5 @@ resource "cloudflare_dns_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   content = "keybase-site-verification=NNZVaBOMg3ALJyId1SRe4LGb6lxxYQr8Nau-yf1ut4w"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }

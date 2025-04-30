@@ -4,6 +4,7 @@ resource "cloudflare_dns_record" "cname_root" {
   name    = "@"
   content = "koyashiro.pages.dev"
   proxied = true
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "cname_blog" {
@@ -12,6 +13,7 @@ resource "cloudflare_dns_record" "cname_blog" {
   name    = "blog"
   content = "blog-koyashiro.pages.dev"
   proxied = true
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "mx_primary" {
@@ -19,7 +21,7 @@ resource "cloudflare_dns_record" "mx_primary" {
   type     = "MX"
   name     = "@"
   content  = "aspmx.l.google.com"
-  ttl      = 1 # auto
+  ttl      = 1 # automatic
   priority = 1
 }
 
@@ -28,7 +30,7 @@ resource "cloudflare_dns_record" "mx_alt1" {
   type     = "MX"
   name     = "@"
   content  = "alt1.aspmx.l.google.com"
-  ttl      = 1 # auto
+  ttl      = 1 # automatic
   priority = 5
 }
 
@@ -37,7 +39,7 @@ resource "cloudflare_dns_record" "mx_alt2" {
   type     = "MX"
   name     = "@"
   content  = "alt2.aspmx.l.google.com"
-  ttl      = 1 # auto
+  ttl      = 1 # automatic
   priority = 5
 }
 
@@ -46,7 +48,7 @@ resource "cloudflare_dns_record" "mx_alt3" {
   type     = "MX"
   name     = "@"
   content  = "alt3.aspmx.l.google.com"
-  ttl      = 1 # auto
+  ttl      = 1 # automatic
   priority = 10
 }
 
@@ -55,7 +57,7 @@ resource "cloudflare_dns_record" "mx_alt4" {
   type     = "MX"
   name     = "@"
   content  = "alt4.aspmx.l.google.com"
-  ttl      = 1 # auto
+  ttl      = 1 # automatic
   priority = 10
 }
 
@@ -64,7 +66,7 @@ resource "cloudflare_dns_record" "txt_spf" {
   type    = "TXT"
   name    = "@"
   content = "v=spf1 include:koyashi.ro ~all"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_dkim" {
@@ -72,7 +74,7 @@ resource "cloudflare_dns_record" "txt_dkim" {
   type    = "TXT"
   name    = "*._domainkey"
   content = "v=DKIM1; p="
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_google_dkim" {
@@ -80,7 +82,7 @@ resource "cloudflare_dns_record" "txt_google_dkim" {
   type    = "TXT"
   name    = "google._domainkey"
   content = "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsN9es+6C1V6MGC8Scg/nHQOEd9rtNraw6hqX6gi24F3i8hAVtlDC2FrSukqUz8HH1WEdaGxPir2yvE8xD7OxIT4uOUinb7eXY5CaCRJL9lpjj82FBcVOkiXcuTEFHu04kkHSo3fuLCl8OHrTup8HUqPJ2VwUiCeOkqjoy7Hv9VZDQmwjPbRyVncjVb/sDtVeY2bVUix1acSo/g5mIrbcw2xWrxCU/VWcEfOvQypfE+z9UfBpbeAGWArBD+l3+vLAWFb3dsMc4CvRa3mGY8kehOMTHnaaf2gO5k7afAkSil/zK580WLHG0Hq6rEG9tsawydVbrkCqRRsV9yAWhyI02QIDAQAB"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_dmarc" {
@@ -88,7 +90,7 @@ resource "cloudflare_dns_record" "txt_dmarc" {
   type    = "TXT"
   name    = "_dmarc"
   content = "v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_google_suite_verification" {
@@ -96,7 +98,7 @@ resource "cloudflare_dns_record" "txt_google_suite_verification" {
   type    = "TXT"
   name    = "@"
   content = "google-site-verification=IXe9IiyOUytKAH9R0_KVE2Vmpt1iOB8kqwtSf-F4304"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 resource "cloudflare_dns_record" "txt_keybase_site_verification" {
@@ -104,7 +106,7 @@ resource "cloudflare_dns_record" "txt_keybase_site_verification" {
   type    = "TXT"
   name    = "@"
   content = "keybase-site-verification=h6nNjeIuG_eU4fByG3qFMwbC8-sUeC5pvpD_m5iIUh4"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }
 
 
@@ -113,5 +115,5 @@ resource "cloudflare_dns_record" "txt_discord" {
   type    = "TXT"
   name    = "_discord"
   content = "dh=f083205940112e59edc7561488d3867f414384a3"
-  ttl     = 1 # auto
+  ttl     = 1 # automatic
 }

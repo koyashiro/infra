@@ -4,6 +4,7 @@ resource "cloudflare_dns_record" "cname_cdn" {
   name    = "cdn"
   content = "public.r2.dev" # R2 bucket is not supported
   proxied = true
+  ttl     = 1 # automatic
 
   lifecycle {
     ignore_changes = [content]

@@ -4,4 +4,5 @@ resource "cloudflare_dns_record" "cname_vpm" {
   name    = "vpm"
   content = "vpm-repos.pages.dev"
   proxied = true
+  ttl     = 1 # automatic
 }
