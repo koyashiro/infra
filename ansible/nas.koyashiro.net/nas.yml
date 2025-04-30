@@ -1,0 +1,5 @@
+- name: Configure nas
+  hosts: nas
+  become: yes
+  roles:
+    - common
