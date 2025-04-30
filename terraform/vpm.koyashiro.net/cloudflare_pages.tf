@@ -25,5 +25,5 @@ resource "cloudflare_pages_project" "vpm_koyashiro_net" {
 resource "cloudflare_pages_domain" "vpm_koyashiro_net" {
   account_id   = var.cloudflare_account_id
   project_name = resource.cloudflare_pages_project.vpm_koyashiro_net.name
-  domain       = resource.cloudflare_dns_record.cname_vpm.hostname
+  name         = resource.cloudflare_dns_record.cname_vpm.hostname
 }

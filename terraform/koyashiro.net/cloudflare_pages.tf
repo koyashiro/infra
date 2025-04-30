@@ -44,5 +44,5 @@ resource "cloudflare_pages_project" "koyashiro_net" {
 resource "cloudflare_pages_domain" "koyashiro_net" {
   account_id   = var.cloudflare_account_id
   project_name = resource.cloudflare_pages_project.koyashiro_net.name
-  domain       = resource.cloudflare_dns_record.cname_root.hostname
+  name         = resource.cloudflare_dns_record.cname_root.hostname
 }
