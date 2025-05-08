@@ -3,16 +3,8 @@ resource "cloudflare_pages_project" "koyashiro_net" {
   name              = "koyashiro-net"
   production_branch = "main"
 
-  source {
-    type = "github"
-    config {
-      owner             = "koyashiro"
-      repo_name         = "koyashiro.net"
-      production_branch = "main"
-    }
-  }
-
-  build_config {
+  build_config = {
+    build_caching   = true
     build_command   = "npm run build"
     destination_dir = "dist"
     root_dir        = ""
@@ -22,15 +14,21 @@ resource "cloudflare_pages_project" "koyashiro_net" {
     web_analytics_token = ""
   }
 
-  deployment_configs {
-    preview {
-      environment_variables = {
-        NODE_VERSION = "22.10.0"
+  deployment_configs = {
+    preview = {
+      env_vars = {
+        NODE_VERSION = {
+          type  = "plain_text"
+          value = "22.10.0"
+        }
       }
     }
-    production {
-      environment_variables = {
-        NODE_VERSION = "22.10.0"
+    production = {
+      env_vars = {
+        NODE_VERSION = {
+          type  = "plain_text"
+          value = "22.10.0"
+        }
       }
     }
   }
@@ -46,5 +44,5 @@ resource "cloudflare_pages_project" "koyashiro_net" {
 resource "cloudflare_pages_domain" "koyashiro_net" {
   account_id   = var.cloudflare_account_id
   project_name = resource.cloudflare_pages_project.koyashiro_net.name
-  domain       = resource.cloudflare_record.cname_root.hostname
+  name         = resource.cloudflare_dns_record.cname_root.hostname
 }
