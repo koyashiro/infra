@@ -1,19 +1,3 @@
-resource "cloudflare_record" "a_root" {
-  zone_id = var.cloudflare_zone_id_koyashiro_live
-  type    = "A"
-  name    = "@"
-  content = resource.vultr_instance.instance.main_ip
-  proxied = true
-}
-
-resource "cloudflare_record" "aaaa_root" {
-  zone_id = var.cloudflare_zone_id_koyashiro_live
-  type    = "AAAA"
-  name    = "@"
-  content = resource.vultr_instance.instance.v6_main_ip
-  proxied = true
-}
-
 resource "cloudflare_record" "txt_spf" {
   zone_id = var.cloudflare_zone_id_koyashiro_live
   type    = "TXT"
