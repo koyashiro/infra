@@ -6,11 +6,6 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "4.52.0"
     }
-
-    vultr = {
-      source  = "vultr/vultr"
-      version = "2.26.0"
-    }
   }
 
   cloud {
@@ -24,8 +19,4 @@ terraform {
 
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
-}
-
-provider "vultr" {
-  api_key = var.vultr_api_key
 }
