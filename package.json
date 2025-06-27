@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "markdownlint-cli2": "0.17.2",
+    "markdownlint-cli2": "0.18.1",
     "prettier": "3.6.2"
   },
   "volta": {
